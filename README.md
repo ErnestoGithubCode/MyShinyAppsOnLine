@@ -1,2 +1,2 @@
 # MyShinyAppsOnLine
-Home of my shiny apps and refactorred Shiny apps
+Home of my shiny apps and refactored Shiny apps
