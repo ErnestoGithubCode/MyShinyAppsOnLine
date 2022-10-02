@@ -1,0 +1,8 @@
+Title: refactoring to OOP ShinyApp comming from Appsilon!
+ReFactAuthor: Ing. Ernesto Ibanez | @eeibanez
+AuthorUrl: 
+License: GPL-3
+DisplayMode: auto 
+Collate: 'app.R'
+Tags: Sniny Apps, OOP, R6 Class, shiny.fluent
+Type: Shiny

@@ -1,0 +1,63 @@
+# https://tidymodules.shinyapps.io/4_communication/
+
+# HARRY PLOTTER https://www.aridhia.com/blog/using-shiny-modules-to-simplify-building-complex-apps/
+
+# created by Eric Nantz. + YOUTUBE 
+# https://rpodcast.github.io/rsconf-2019/#38
+# github.com/rpodcast/ames_explorer
+# https://www.aridhia.com/shinyapps/  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ + GITHUB CODE!!!!!!!!!!!!!!!!
+---------------https://mastering-shiny.org/scaling-modules.html
+
+# https://towardsdatascience.com/getting-started-with-r-shiny-821eb0328e73
+# https://themockup.blog/posts/2020-12-13-extracting-json-from-websites-and-public-apis-with-r/index.html
+# https://www.r-bloggers.com/2020/05/intro-to-polite-web-scraping-of-soccer-data-with-r/
+# https://www.google.com/search?q=espn+table++scrap+r+language++web+page&newwindow=1&client=firefox-b-d&sxsrf=ALiCzsbcBAM_EPgjblvoACuV9CdVKIRfTw%3A1664300320711&ei=IDUzY8z_KvSVwbkP7q-w8Ac&ved=0ahUKEwjMj6nrwbX6AhX0SjABHe4XDH4Q4dUDCA0&uact=5&oq=espn+table++scrap+r+language++web+page&gs_lcp=Cgdnd3Mtd2l6EAM6CggAEEcQ1gQQsAM6BQgAEKIESgQIQRgASgQIRhgAUIAGWMY4YLJGaAFwAXgBgAHEAogB-RqSAQgwLjQuMTEuMZgBAKABAcgBCMABAQ&sclient=gws-wiz
+# Taken https://github.com/MangoTheCat/shinyAppDemo/blob/master/R/shinyAppUI.R
+# bidfaxinfo@gmail.com.
+# worldometers.com
+# https://www.webscrapingexpert.com/automobile-websites-data-scraping-services/
+# by Gyan Vardhan
+# https://data-science-blog.com/blog/2020/11/18/web-scraping-using-r/
+#      by Gyan Vardhan      https://github.com/vgyaan/Alexa/blob/master/webscrap.R
+#  eBOOK onLine Web scraping using rvest    Huiyu Song and Xiao Ji-----> https://jtr13.github.io/cc19/web-scraping-using-rvest.html
+#                                                           https://github.com/jtr13/cc19/blob/master/rvest_tutorial.Rmd
+# https://github.com/jtr13/cc19
+# https://rvest.tidyverse.org/
+# https://rvest.tidyverse.org/articles/rvest.html
+
+# SERVER
+shinyAppServer <- function(input, output) {
+
+  output$distPlot <- renderPlot({
+    # generate bins based on input$bins from ui.R
+    x    <- datasets::"faithful"[, 2]
+    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+
+    # draw the histogram with the specified number of bins
+    hist(x, breaks = bins, col = 'darkgray', border = 'white')
+  })
+}
+
+#UI
+
+shinyAppUI <- fluidPage(
+
+  # Application title
+  titlePanel("Old Faithful Geyser Data"),
+
+  # Sidebar with a slider input for number of bins
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("bins",
+                  "Number of bins:",
+                  min = 1,
+                  max = 50,
+                  value = 30)
+    ),
+
+    # Show a plot of the generated distribution
+    mainPanel(
+      plotOutput("distPlot")
+    )
+  )
+)
